@@ -1,0 +1,96 @@
+﻿@model WebAppProject.Models.Ticket
+@{
+    Layout = null;
+}
+<head>
+    <title>Ticket</title>
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/Ticket.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="">
+        <div class="main-page">
+            <div class="nav-all">
+                <div class="navbar-body">
+                    <ul>
+                        <li><a class="">Home</a></li>
+                        <li><a class="">Contact</a></li>
+                        <li><a class="">Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="Search-ticket"> 
+                <form asp-action="Ticket" asp-controller="Ticket" method="post">
+                    <div class="search-body">
+                        <div class="From-text">
+                            @Html.TextBoxFor(x => x.From, new { @class = "Ticket-filter", type = "text", placeholder = "From", autocomplete = "off", list = "fromlist" })
+                            <datalist id="fromlistfrom" ></datalist>
+                        </div>
+                        <div class="To-text">
+                            @Html.TextBoxFor(x => x.To, new { @class = "Ticket-filter", type = "text", placeholder = "To", autocomplete = "off" })
+                            @* <datalist id="fromlistto"></datalist> *@
+                        </div>
+                        <div class="Date-text">
+                            @Html.TextBoxFor(x => x.Date, new { @class = "Ticket-filter", type = "date", placeholder = "Date" })
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <button class="btn btn-danger" type="submit">Search</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="~/js/bootstrap.min.js"></script>
+<script src="~/js/jquery-slim.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $("#From").keyup(function () {
+        var val = $("#From").val();
+        $.ajax({
+            url: 'Ticket/GetLocations',
+            method: 'GET',
+            data: { Value: val },
+            success: function (response) {
+                if (response != null) {
+                    var options = '';
+                    $.each(response, function (index, value) {
+                        options += `<option value="${value.lname}">`;
+                    });
+                    $("#fromlistfrom").html(options);
+                } else {
+                    $("#fromlistfrom").html("");
+                }
+            },
+            error: function (xhr, status, error) {
+                alert("Error!!!!");
+            }
+        });
+    });
+
+    $("#To").keyup(function () {
+        var val = $("#To").val();
+        $.ajax({
+            url: 'Ticket/GetLocations',
+            method: 'GET',
+            data: { Value: val },
+            success: function (response) {
+                if (response != null) {
+                    var options = '';
+                    $.each(response, function (index, value) {
+                        options += `<option value="${value.lname}">`;
+                    });
+                    $("#fromlistto").html(options);
+                } else {
+                    $("#fromlistto").html("");
+                }
+            },
+            error: function (xhr, status, error) {
+                alert("Error!!!!");
+            }
+        });
+    });
+
+</script>
+

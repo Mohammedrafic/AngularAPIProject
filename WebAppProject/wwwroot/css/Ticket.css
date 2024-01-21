@@ -1,0 +1,77 @@
+﻿body {
+    background-color: #ededed;
+}
+
+.navbar-body ul {
+    display: flex;
+    justify-content: end;
+    list-style-type: none;
+    margin-right: 40px;
+    margin-bottom: inherit;
+}
+
+.navbar-body li {
+    padding: 10px;
+    font-weight: bold;
+    font-size: 130%;
+    color: wheat;
+}
+
+.navbar-body {
+    background-color: black;
+}
+
+    .navbar-body li:hover {
+        background-color: #a01f1f;
+        cursor: pointer;
+    }
+
+.Search-ticket {
+    width: 100%;
+}
+.search-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15%;
+}
+
+.Ticket-filter {
+    width: 100%;
+    height: 50%;
+    background-color: #ff4545;
+    color: white;
+    font-weight: bold;
+    font-size: 150%;
+}
+.From-text {
+    margin-right: 5px;
+    width: 25%;
+    max-width:100%;
+}
+.To-text {
+    margin-right: 5px;
+    width: 25%;
+    max-width: 100%;
+}
+.Date-text {
+    width: 15%;
+    max-width: 100%;
+}
+input#To {
+    padding: 0px 15px 0px 15px;
+}
+input#From {
+    border-radius: 40px 0px 0px 40px;
+    padding: 0px 15px 0px 15px;
+}
+input#Date {
+    border-radius: 0px 40px 40px 0px;
+    padding: 0px 15px 0px 15px;
+}
+
+.Ticket-filter::placeholder{
+    color:white;
+}
+
+
